@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
+import '../config/env.config.js';
 import { pool } from '../config/db.config.js';
 import logger from '../logger/logger.js';
-import env from '../config/env.config.js';
 
 const seedCFO = async () => {
   const email = 'cfo@org.com';
@@ -12,7 +12,7 @@ const seedCFO = async () => {
       return;
     }
 
-    const hashed = await bcrypt.hash('CFO#ORG@April2026', env.BCRYPT_SALT_ROUNDS || 10);
+    const hashed = await bcrypt.hash('CFO#ORG@April2026', Number(process.env.BCRYPT_SALT_ROUNDS) || 10);
     await pool.query(
       'INSERT INTO users (id, name, email, password, role) VALUES (gen_random_uuid(), $1, $2, $3, $4)',
       ['CFO User', email, hashed, 'CFO']

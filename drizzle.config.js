@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
@@ -8,5 +9,8 @@ export default defineConfig({
     './src/app/approvals/approvals.schema.js',
   ],
   out: './migrations',
-  driver: 'pg',
+  dialect: 'postgresql',
+  dbCredentials: {
+    url: process.env.DATABASE_URL,
+  },
 });

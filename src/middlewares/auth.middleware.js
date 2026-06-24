@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
+import '../config/env.config.js';
 import AppError from '../utils/AppError.js';
-import env from '../config/env.config.js';
 
 export const auth = (req, res, next) => {
 	const token = req.cookies?.auth || req.cookies?.token;
@@ -8,7 +8,7 @@ export const auth = (req, res, next) => {
 		throw new AppError('Authentication token missing', 401);
 	}
 	try {
-		const decoded = jwt.verify(token, env.JWT_SECRET);
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);
 		req.user = decoded;
 		return next();
 	} catch (err) {

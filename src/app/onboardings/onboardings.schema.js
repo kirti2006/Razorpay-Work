@@ -1,5 +1,24 @@
+import { z } from 'zod';
 import { pgTable, varchar, text, timestamp } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm/sql';
+
+const orgEmailSchema = z
+	.string()
+	.email()
+	.refine((value) => value.endsWith('@org.com'), {
+		message: 'Email must end with @org.com',
+	});
+
+export const registerSchema = z.object({
+	name: z.string().min(1, 'Name is required'),
+	email: orgEmailSchema,
+	password: z.string().min(8, 'Password must be at least 8 characters'),
+});
+
+export const loginSchema = z.object({
+	email: orgEmailSchema,
+	password: z.string().min(1, 'Password is required'),
+});
 
 export const users = pgTable('users', {
 	id: varchar('id').primaryKey().default(sql`gen_random_uuid()`),
@@ -9,3 +28,4 @@ export const users = pgTable('users', {
 	role: varchar('role', { length: 10 }).notNull().default('EMP'),
 	created_at: timestamp('created_at').defaultNow(),
 });
+

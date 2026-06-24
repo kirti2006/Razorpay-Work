@@ -1,5 +1,5 @@
 import createApp from './app.js';
-import env from './config/env.config.js';
+import './config/env.config.js';
 import logger from './logger/logger.js';
 import { pool } from './config/db.config.js';
 
@@ -15,7 +15,7 @@ const start = async () => {
 
 	const app = createApp();
 
-	const PORT = 7002; // hard requirement to start on 7002
+	const PORT = Number(process.env.PORT) || 7002; // hard requirement to start on 7002
 	app.listen(PORT, () => {
 		logger.info(`Server listening on port ${PORT}`);
 	});

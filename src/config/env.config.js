@@ -1,4 +1,8 @@
-// env.config.js - load env variables and validate
+import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 const {
 	PORT,
 	DATABASE_URL,
@@ -16,9 +20,4 @@ if (missing.length) {
 	throw new Error(`Missing required env variables: ${missing.join(', ')}`);
 }
 
-export default {
-	PORT: Number(PORT) || 7002,
-	DATABASE_URL,
-	JWT_SECRET,
-	BCRYPT_SALT_ROUNDS: Number(BCRYPT_SALT_ROUNDS),
-};
+export {};
