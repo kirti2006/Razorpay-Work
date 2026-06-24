@@ -2,9 +2,10 @@
   "name": "reimbursements-management",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "node src/server.js",
+    "dev": "node server.js",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed-data": "node scripts/seed-cfo.js"
+    "db:seed-data": "node src/db/seed.js"
   }
 }

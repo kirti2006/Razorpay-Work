@@ -1,1 +1,11 @@
-// employees.schema.js (scaffold)
+import { pgTable, varchar } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm/sql';
+
+export const employee_assignments = pgTable(
+	'employee_assignments',
+	{
+		id: varchar('id').primaryKey().default(sql`gen_random_uuid()`),
+		employee_id: varchar('employee_id', { length: 255 }).notNull(),
+		manager_id: varchar('manager_id', { length: 255 }).notNull(),
+	}
+);
