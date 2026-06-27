@@ -20,12 +20,11 @@ const createApp = () => {
 				'http://127.0.0.1:5500',
 				'http://localhost:5500',
 				'http://localhost:3000',
-				// Add your deployed Render frontend URL here once you have it, e.g.:
-				// 'https://razorpay-frontend.onrender.com'
+				'https://razorpay-work-1.onrender.com'
 			];
 			// Allow requests with no origin (like mobile apps or curl requests)
 			if (!origin) return callback(null, true);
-			
+
 			if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
 				callback(null, true);
 			} else {
