@@ -1,4 +1,4 @@
-# Minimal Vanilla JS Frontend
+# Frontend Application for Reimbursement Management System
 
 This is a lightweight Vanilla JavaScript frontend for the Reimbursement Management API. It demonstrates how to interact with the backend API endpoints using the native `fetch` API.
 
