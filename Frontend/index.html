@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reimbursement App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Auth Section -->
+        <section id="auth-section">
+            <h2>Login / Register</h2>
+            <form id="auth-form">
+                <input type="text" id="name" placeholder="Name (Required for Register)" />
+                <input type="email" id="email" placeholder="Email (@org.com)" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <div class="auth-buttons">
+                    <button type="button" id="login-btn">Login</button>
+                    <button type="button" id="register-btn">Register</button>
+                </div>
+            </form>
+            <p id="auth-message" class="message"></p>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" style="display: none;">
+            <div class="header">
+                <h2>Dashboard</h2>
+                <button id="logout-btn">Logout</button>
+            </div>
+
+            <div class="reimbursements-container">
+                <div class="create-reimbursement">
+                    <h3>Submit New Reimbursement</h3>
+                    <form id="reimbursement-form">
+                        <input type="text" id="r-title" placeholder="Title" required />
+                        <input type="text" id="r-desc" placeholder="Description" required />
+                        <input type="number" id="r-amount" placeholder="Amount" step="0.01" required />
+                        <button type="submit">Submit</button>
+                    </form>
+                    <p id="r-message" class="message"></p>
+                </div>
+
+                <div class="reimbursements-list">
+                    <h3>My Reimbursements</h3>
+                    <ul id="reimbursements-ul"></ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
