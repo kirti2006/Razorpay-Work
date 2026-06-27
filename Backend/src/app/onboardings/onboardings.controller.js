@@ -6,7 +6,8 @@ import { logoutUser, loginUser, registerUser } from './onboardings.service.js';
 
 const authCookieOptions = {
 	httpOnly: true,
-	sameSite: 'strict',
+	sameSite: 'none',
+	secure: true,
 };
 
 export const registerController = asyncHandler(async (req, res) => {
